@@ -1,54 +1,55 @@
-function add(...args) {
+function add(tempValue) {
   let total = 0;
-  for (let i = 0; i < args.length; i++) {
-    total += args[i];
+  for (let i = 0; i < tempValue.length; i++) {
+    total += tempValue[i];
   }
-  return total;
+  return tempValue = total;
 }
 
-function subtract(...args) {
-  let total = args[0];
-  for (let i = 1; i < args.length; i++) {
-    total -= args[i];
+function subtract(tempValue) {
+  let total = tempValue[0];
+  for (let i = 1; i < tempValue.length; i++) {
+    total -= tempValue[i];
   }
-  return total;
+  return tempValue = total;
 }
 
-function multiply(...args) {
-  let total = args[0];
-  for (let i = 1; i < args.length; i++) {
-    total *= args[i];
+function multiply(tempValue) {
+  let total = tempValue[0];
+  for (let i = 1; i < tempValue.length; i++) {
+    total *= tempValue[i];
   }
-  return total;
+  return tempValue = total;
 }
 
-function divide(...args) {
-  let total = args[0];
-  for (let i = 1; i < args.length; i++) {
-    total /= args[i];
+function divide(tempValue) {
+  let total = tempValue[0];
+  for (let i = 1; i < tempValue.length; i++) {
+    total /= tempValue[i];
   }
-  return total;
+  return tempValue = total;
 }
 
-function maths(operator, ...args) {
+function maths(operator, tempValue) {
   switch (operator) {
     case "+":
-      return add(...args);
+      return add(tempValue);
       break;
     case "-":
-      return subtract(...args);
+      return subtract(tempValue);
       break;
     case "*":
-      return multiply(...args);
+      return multiply(tempValue);
       break;
     case "/":
-      return divide(...args);
+      return divide(tempValue);
   }
 }
-// console.log(maths('*', 1, 2, 6))
+
 
 let displayValue = [];
-let chosenOp = [];
+let operator = [];
+let tempValue = [];
 function storeInput(e) {
   let buttonInput = e.getAttribute("value");
   if (
@@ -57,24 +58,31 @@ function storeInput(e) {
     buttonInput === "*" ||
     buttonInput === "/"
   ) {
-    chosenOp += buttonInput;
+    tempValue.push(displayValue);
+    displayValue = ""
+    operator += buttonInput;
     document.getElementById("screenInput").innerHTML += `${buttonInput}`;
   } else if (/^\d*\.?\d+$/.test(buttonInput)) {
     displayValue += buttonInput;
     document.getElementById("screenInput").innerHTML += `${buttonInput}`;
   } else if (buttonInput === "clear") {
     displayValue = "";
-    chosenOp = "";
+    operator = "";
+    tempValue = "";
     document.getElementById("screenInput").innerHTML = "";
   } else if (buttonInput === "=") {
+   tempValue.push(displayValue);
+   tempValue = tempValue.map(Number);
     document.getElementById("screenInput").innerHTML = maths(
-      chosenOp,
-      displayValue
+      operator,
+      tempValue
     );
+      operator = ""
   }
-  ///////////////////////CALCULATOR NOT WORKING//////////
+ ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
 
-  console.log({ buttonInput });
-  console.log({ chosenOp });
-  console.log({ displayValue });
+  console.log({buttonInput});
+  console.log({operator});
+  console.log({displayValue});
+  console.log({tempValue});
 }
