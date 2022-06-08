@@ -6,38 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="js/script.js" defer></script>
-    <title>Document</title>
+    <title>Calculator</title>
   </head>
   <body>
-    <div id="main-container">
-      <div id="screen-container"></div>
-      <div id="number-container">
-        <div class="row-1">
-          <button class="clear-btn">Clear</button>
-          <button class="divide-btn">/</button>
-          <button class="multiply-btn">*</button>
+    <div id="mainContainer">
+      <div id="screenContainer"><h2 id="screenInput"></h2></div>
+      <div id="numberContainer">
+        <div class="row1">
+          <button type="button" value="clear" class="clearBtn" onclick="storeInput(this)">Clear</button>
+          <button type="button" value="/" class="divideBtn" onclick="storeInput(this)">/</button>
+          <button type="button" value="*" class="multiplyBtn" onclick="storeInput(this)">*</button>
         </div>
-        <div class="row-2">
-          <button class="number-btn">7</button>
-          <button class="number-btn">8</button>
-          <button class="number-btn">9</button>
-          <button class="minus-btn">-</button>
+        <div class="row2">
+          <button type="button" value="7" class="numberBtn" onclick="storeInput(this)">7</button>
+          <button type="button" value="8" class="numberBtn" onclick="storeInput(this)">8</button>
+          <button type="button" value="9" class="numberBtn" onclick="storeInput(this)">9</button>
+          <button type="button" value="-" class="minusBtn" onclick="storeInput(this)">-</button>
         </div>
-        <div class="row-3">
-          <button class="number-btn">4</button>
-          <button class="number-btn">5</button>
-          <button class="number-btn">6</button>
-          <button class="plus-btn">+</button>
+        <div class="row3">
+          <button type="button" value="4" class="numberBtn" onclick="storeInput(this)">4</button>
+          <button type="button" value="5" class="numberBtn" onclick="storeInput(this)">5</button>
+          <button type="button" value="6" class="numberBtn" onclick="storeInput(this)">6</button>
+          <button type="button" value="+" class="plusBtn" onclick="storeInput(this)">+</button>
         </div>
-        <div class="row-4">
-          <button class="number-btn">1</button>
-          <button class="number-btn">2</button>
-          <button class="number-btn">3</button>
+        <div class="row4">
+          <button type="button" value="1" class="numberBtn" onclick="storeInput(this)">1</button>
+          <button type="button" value="2" class="numberBtn" onclick="storeInput(this)">2</button>
+          <button type="button" value="3" class="numberBtn" onclick="storeInput(this)">3</button>
         </div>
-        <div class="row-5">
-         <button class="number-btn" id="zero-btn">0</button>
-         <button class="decimal-btn">.</button>
-         <button class="equal-btn">=</button>
+        <div class="row5">
+         <button type="button" value="0" class="numberBtn" id="zeroBtn" onclick="storeInput(this)">0</button>
+         <button type="button" value="." class="decimalBtn" onclick="storeInput(this)">.</button>
+         <button type="button" value="=" class="equalBtn" onclick="storeInput(this)">=</button>
         </div>
       </div>
     </div>

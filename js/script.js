@@ -36,13 +36,45 @@ function maths(operator, ...args) {
       return add(...args);
       break;
     case "-":
-     return subtract(...args);
+      return subtract(...args);
       break;
     case "*":
-     return multiply(...args);
+      return multiply(...args);
       break;
     case "/":
       return divide(...args);
-  } 
+  }
 }
-console.log(maths('*', 1, 2, 6))
+// console.log(maths('*', 1, 2, 6))
+
+let displayValue = [];
+let chosenOp = [];
+function storeInput(e) {
+  let buttonInput = e.getAttribute("value");
+  if (
+    buttonInput === "+" ||
+    buttonInput === "-" ||
+    buttonInput === "*" ||
+    buttonInput === "/"
+  ) {
+    chosenOp += buttonInput;
+    document.getElementById("screenInput").innerHTML += `${buttonInput}`;
+  } else if (/^\d*\.?\d+$/.test(buttonInput)) {
+    displayValue += buttonInput;
+    document.getElementById("screenInput").innerHTML += `${buttonInput}`;
+  } else if (buttonInput === "clear") {
+    displayValue = "";
+    chosenOp = "";
+    document.getElementById("screenInput").innerHTML = "";
+  } else if (buttonInput === "=") {
+    document.getElementById("screenInput").innerHTML = maths(
+      chosenOp,
+      displayValue
+    );
+  }
+  ///////////////////////CALCULATOR NOT WORKING//////////
+
+  console.log({ buttonInput });
+  console.log({ chosenOp });
+  console.log({ displayValue });
+}
