@@ -4,7 +4,7 @@ function add(tempValue) {
     total += tempValue[i];
   }
   return total;
-}
+} //total.toFixed(4);   <<<-- return to 3 decimal places (BUT! always does it)
 
 function subtract(tempValue) {
   let total = tempValue[0];
@@ -49,6 +49,8 @@ function maths(operator, tempValue) {
 let displayValue = [];
 let operator = [];
 let tempValue = [];
+let answer = [];
+document.getElementById("screenInput").innerHTML = "0";
 function storeInput(e) {
   let buttonInput = e.getAttribute("value");
   if (
@@ -58,27 +60,26 @@ function storeInput(e) {
     buttonInput === "/"
   ) {
     tempValue.push(displayValue);
-    displayValue = []
+    displayValue = [];
     operator += buttonInput;
     document.getElementById("screenInput").innerHTML += `${buttonInput}`;
   } else if (/^\d*\.?\d+$/.test(buttonInput)) {
+    document.getElementById("screenInput").innerHTML = "";
     displayValue += buttonInput;
-    document.getElementById("screenInput").innerHTML += `${buttonInput}`;
+    document.getElementById("screenInput").innerHTML += `${displayValue}`;
   } else if (buttonInput === "clear") {
     displayValue = [];
     operator = [];
     tempValue = [];
-    document.getElementById("screenInput").innerHTML = "";
+    document.getElementById("screenInput").innerHTML = "0";
   } else if (buttonInput === "=") {
-   tempValue.push(displayValue);
+    tempValue.push(displayValue);
     tempValue = tempValue.map(Number);
-    document.getElementById("screenInput").innerHTML = maths(
-      operator,
-      tempValue
-    );
+    answer = maths(operator, tempValue);
+    document.getElementById("screenInput").innerHTML = `${answer}`;
     displayValue = maths(operator, tempValue);
     displayValue.toString();
-     operator = [];
+    operator = [];
     tempValue = [];
   }
   ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
