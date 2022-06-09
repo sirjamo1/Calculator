@@ -3,7 +3,7 @@ function add(tempValue) {
   for (let i = 0; i < tempValue.length; i++) {
     total += tempValue[i];
   }
-  return tempValue = total;
+  return total;
 }
 
 function subtract(tempValue) {
@@ -11,7 +11,7 @@ function subtract(tempValue) {
   for (let i = 1; i < tempValue.length; i++) {
     total -= tempValue[i];
   }
-  return tempValue = total;
+  return total;
 }
 
 function multiply(tempValue) {
@@ -19,7 +19,7 @@ function multiply(tempValue) {
   for (let i = 1; i < tempValue.length; i++) {
     total *= tempValue[i];
   }
-  return tempValue = total;
+  return total;
 }
 
 function divide(tempValue) {
@@ -27,7 +27,7 @@ function divide(tempValue) {
   for (let i = 1; i < tempValue.length; i++) {
     total /= tempValue[i];
   }
-  return tempValue = total;
+  return total;
 }
 
 function maths(operator, tempValue) {
@@ -46,7 +46,6 @@ function maths(operator, tempValue) {
   }
 }
 
-
 let displayValue = [];
 let operator = [];
 let tempValue = [];
@@ -59,30 +58,33 @@ function storeInput(e) {
     buttonInput === "/"
   ) {
     tempValue.push(displayValue);
-    displayValue = ""
+    displayValue = []
     operator += buttonInput;
     document.getElementById("screenInput").innerHTML += `${buttonInput}`;
   } else if (/^\d*\.?\d+$/.test(buttonInput)) {
     displayValue += buttonInput;
     document.getElementById("screenInput").innerHTML += `${buttonInput}`;
   } else if (buttonInput === "clear") {
-    displayValue = "";
-    operator = "";
-    tempValue = "";
+    displayValue = [];
+    operator = [];
+    tempValue = [];
     document.getElementById("screenInput").innerHTML = "";
   } else if (buttonInput === "=") {
    tempValue.push(displayValue);
-   tempValue = tempValue.map(Number);
+    tempValue = tempValue.map(Number);
     document.getElementById("screenInput").innerHTML = maths(
       operator,
       tempValue
     );
-      operator = ""
+    displayValue = maths(operator, tempValue);
+    displayValue.toString();
+     operator = [];
+    tempValue = [];
   }
- ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
+  ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
 
-  console.log({buttonInput});
-  console.log({operator});
-  console.log({displayValue});
-  console.log({tempValue});
+  console.log({ buttonInput });
+  console.log({ operator });
+  console.log({ displayValue });
+  console.log({ tempValue });
 }
