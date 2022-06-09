@@ -62,7 +62,7 @@ function storeInput(e) {
     tempValue.push(displayValue);
     displayValue = [];
     operator += buttonInput;
-    document.getElementById("screenInput").innerHTML += `${buttonInput}`;
+    document.getElementById("screenInput").innerHTML += ` ${buttonInput}`;
   } else if (/^\d*\.?\d+$/.test(buttonInput)) {
     document.getElementById("screenInput").innerHTML = "";
     displayValue += buttonInput;
@@ -76,12 +76,23 @@ function storeInput(e) {
     tempValue.push(displayValue);
     tempValue = tempValue.map(Number);
     answer = maths(operator, tempValue);
-    document.getElementById("screenInput").innerHTML = `${answer}`;
-    displayValue = maths(operator, tempValue);
-    displayValue.toString();
-    operator = [];
-    tempValue = [];
+    if (answer % 1 != 0) {
+      answer = answer.toFixed(3);
+      document.getElementById("screenInput").innerHTML = `${answer}`;
+    } else if (answer == "Infinity") {
+      document.getElementById("screenInput").innerHTML = "STOP THAT!";
+      operator = [];
+      tempValue = [];
+      displayValue = [];
+    } else {
+      document.getElementById("screenInput").innerHTML = `${answer}`;
+      displayValue = maths(operator, tempValue);
+      displayValue.toString();
+      operator = [];
+      tempValue = [];
+    }
   }
+
   ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
 
   console.log({ buttonInput });
