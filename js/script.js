@@ -4,7 +4,7 @@ function add(tempValue) {
     total += tempValue[i];
   }
   return total;
-} //total.toFixed(4);   <<<-- return to 3 decimal places (BUT! always does it)
+}
 
 function subtract(tempValue) {
   let total = tempValue[0];
@@ -45,7 +45,6 @@ function maths(operator, tempValue) {
       return divide(tempValue);
   }
 }
-
 let displayValue = [];
 let operator = [];
 let tempValue = [];
@@ -53,7 +52,20 @@ let answer = [];
 document.getElementById("screenInput").innerHTML = "0";
 function storeInput(e) {
   let buttonInput = e.getAttribute("value");
-  if (
+  //IF BUTTON IS NUMBER ADD / IF BUTTON IS "." ONLY 0NE "." CAN BE ADDED
+  if (/^\d*\.?\d+$/.test(buttonInput) || /^\.?$/.test(buttonInput)) {
+    document.getElementById("screenInput").innerHTML = "";
+    if (/^\d*\.?\d+$/.test(buttonInput)) {
+      document.getElementById("screenInput").innerHTML = `${(displayValue +=
+        buttonInput)}`;
+    } else if (displayValue.indexOf(".") >= 1) {
+      document.getElementById("screenInput").innerHTML = `${displayValue}`;
+    } else {
+      document.getElementById("screenInput").innerHTML = `${(displayValue +=
+        buttonInput)}`;
+    }
+  } else if (
+    //OPERATOR INPUT
     buttonInput === "+" ||
     buttonInput === "-" ||
     buttonInput === "*" ||
@@ -63,28 +75,28 @@ function storeInput(e) {
     displayValue = [];
     operator += buttonInput;
     document.getElementById("screenInput").innerHTML += ` ${buttonInput}`;
-  } else if (/^\d*\.?\d+$/.test(buttonInput)) {
-    document.getElementById("screenInput").innerHTML = "";
-    displayValue += buttonInput;
-    document.getElementById("screenInput").innerHTML += `${displayValue}`;
   } else if (buttonInput === "clear") {
+    //CLEAR CONDITION
     displayValue = [];
     operator = [];
     tempValue = [];
     document.getElementById("screenInput").innerHTML = "0";
   } else if (buttonInput === "=") {
+    //EQUAL CONDITION
     tempValue.push(displayValue);
     tempValue = tempValue.map(Number);
     answer = maths(operator, tempValue);
     if (answer % 1 != 0) {
-      answer = answer.toFixed(3);
-      document.getElementById("screenInput").innerHTML = `${answer}`;
+      //DECIMAL PLACE CONDITION (ANSWER)
+      document.getElementById("screenInput").innerHTML = `${answer.toFixed(3)}`;
     } else if (answer == "Infinity") {
+      //DIVIDE BY 0 CONDITION (ANSWER)
       document.getElementById("screenInput").innerHTML = "STOP THAT!";
       operator = [];
       tempValue = [];
       displayValue = [];
     } else {
+      //ANSWER
       document.getElementById("screenInput").innerHTML = `${answer}`;
       displayValue = maths(operator, tempValue);
       displayValue.toString();
@@ -92,9 +104,6 @@ function storeInput(e) {
       tempValue = [];
     }
   }
-
-  ////////CAN ONLY DO ONE OPERATION AT A TIME//////////////
-
   console.log({ buttonInput });
   console.log({ operator });
   console.log({ displayValue });
