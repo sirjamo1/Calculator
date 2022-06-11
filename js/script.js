@@ -45,20 +45,22 @@ function maths(operator, tempValue) {
       return divide(tempValue);
   }
 }
+
 let displayValue = [];
 let operator = [];
 let tempValue = [];
 let answer = [];
 document.getElementById("screenInput").innerHTML = "0";
+
 function storeInput(e) {
   let buttonInput = e.getAttribute("value");
   //IF BUTTON IS NUMBER ADD / IF BUTTON IS "." ONLY 0NE "." CAN BE ADDED
-  if (/^\d*\.?\d+$/.test(buttonInput) || /^\.?$/.test(buttonInput)) {
+  if (
+    (/^\d*\.?\d+$/.test(buttonInput) || /^\.?$/.test(buttonInput)) &&
+    displayValue.length < 12
+  ) {
     document.getElementById("screenInput").innerHTML = "";
-    if (/^\d*\.?\d+$/.test(buttonInput)) {
-      document.getElementById("screenInput").innerHTML = `${(displayValue +=
-        buttonInput)}`;
-    } else if (displayValue.indexOf(".") >= 1) {
+    if (displayValue.indexOf(".") >= 1 && /^\.?$/.test(buttonInput)) {
       document.getElementById("screenInput").innerHTML = `${displayValue}`;
     } else {
       document.getElementById("screenInput").innerHTML = `${(displayValue +=
@@ -71,10 +73,12 @@ function storeInput(e) {
     buttonInput === "*" ||
     buttonInput === "/"
   ) {
-    tempValue.push(displayValue);
-    displayValue = [];
-    operator += buttonInput;
-    document.getElementById("screenInput").innerHTML += ` ${buttonInput}`;
+    if (operator.length !== 1) {
+      tempValue.push(displayValue);
+      operator += buttonInput;
+      document.getElementById("screenInput").innerHTML += ` ${buttonInput}`;
+      displayValue = [];
+    }
   } else if (buttonInput === "clear") {
     //CLEAR CONDITION
     displayValue = [];
@@ -83,29 +87,31 @@ function storeInput(e) {
     document.getElementById("screenInput").innerHTML = "0";
   } else if (buttonInput === "=") {
     //EQUAL CONDITION
-    tempValue.push(displayValue);
-    tempValue = tempValue.map(Number);
-    answer = maths(operator, tempValue);
-    if (answer % 1 != 0) {
-      //DECIMAL PLACE CONDITION (ANSWER)
-      document.getElementById("screenInput").innerHTML = `${answer.toFixed(3)}`;
-    } else if (answer == "Infinity") {
-      //DIVIDE BY 0 CONDITION (ANSWER)
-      document.getElementById("screenInput").innerHTML = "STOP THAT!";
+    if (operator.toString().length > 0) {
+      tempValue.push(displayValue);
+      tempValue = tempValue.map(Number);
+      answer = maths(operator, tempValue);
+      answer = Math.round(answer * 100) / 100; //<<decimal place condition
       operator = [];
       tempValue = [];
-      displayValue = [];
+      if (answer.toString().length > 12) {
+        displayValue = [];
+        document.getElementById("screenInput").innerHTML = `Too Long!`;
+      } else {
+        displayValue = answer;
+        document.getElementById("screenInput").innerHTML = `${answer}`;
+      }
     } else {
-      //ANSWER
-      document.getElementById("screenInput").innerHTML = `${answer}`;
-      displayValue = maths(operator, tempValue);
-      displayValue.toString();
-      operator = [];
-      tempValue = [];
+      if ((displayValue = [])) {
+        document.getElementById("screenInput").innerHTML = `0`;
+      } else {
+        document.getElementById("screenInput").innerHTML = `${displayValue}`;
+      }
     }
   }
   console.log({ buttonInput });
   console.log({ operator });
   console.log({ displayValue });
   console.log({ tempValue });
+  console.log({ answer });
 }
