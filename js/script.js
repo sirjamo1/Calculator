@@ -59,7 +59,9 @@ function storeInput(e) {
     (/^\d*\.?\d+$/.test(buttonInput) || /^\.?$/.test(buttonInput)) &&
     displayValue.length < 12
   ) {
-    document.getElementById("screenInput").innerHTML = "";
+    if (answer.length > 0) {
+      displayValue = [];
+    }
     if (displayValue.indexOf(".") >= 1 && /^\.?$/.test(buttonInput)) {
       document.getElementById("screenInput").innerHTML = `${displayValue}`;
     } else {
@@ -84,6 +86,7 @@ function storeInput(e) {
     displayValue = [];
     operator = [];
     tempValue = [];
+    answer = [];
     document.getElementById("screenInput").innerHTML = "0";
   } else if (buttonInput === "=") {
     //EQUAL CONDITION
@@ -92,9 +95,10 @@ function storeInput(e) {
       tempValue = tempValue.map(Number);
       answer = maths(operator, tempValue);
       answer = Math.round(answer * 100) / 100; //<<decimal place condition
+      answer = answer.toString();
       operator = [];
       tempValue = [];
-      if (answer.toString().length > 12) {
+      if (answer.toString().length > 12 || answer == "Infinity") {
         displayValue = [];
         document.getElementById("screenInput").innerHTML = `Too Long!`;
       } else {
