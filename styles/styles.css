@@ -8,11 +8,13 @@ body {
   justify-content: center;
 }
 #mainContainer {
- border-radius: 6px;
+  border-radius: 6px;
   margin-top: 100px;
   width: 380px;
   height: 500px;
   background-color: grey;
+  border-top: 6px rgb(87, 85, 85) solid;
+  border-right: 4px rgb(87, 85, 85) solid;
   display: flex;
   flex-direction: column;
 }
@@ -42,10 +44,22 @@ button {
   margin: 10px;
   width: 60px;
   height: 60px;
+  border-radius: 2px;
+  border-top: 3px rgb(87, 85, 85) solid;
+  border-right: 2px rgb(87, 85, 85) solid;
+}
+button:active {
+  transform: translateY(-2px);
+  border-bottom: 1.5px rgb(87, 85, 85) solid;
+  border-left: 1px rgb(87, 85, 85) solid;
+  border-top: 1.5px rgb(87, 85, 85) solid;
+  border-right: 1px rgb(87, 85, 85) solid;
 }
 .row1 {
   margin-top: 0px;
   margin-bottom: -5px;
+  position: absolute;
+  top: 230px;
 }
 .clearBtn {
   width: 144px;
@@ -58,18 +72,21 @@ button {
   height: 40px;
 }
 .row2 {
-}
-.minusBtn {
+  position: absolute;
+  top: 280px;
 }
 .row3 {
-}
-.plusBtn {
+  position: absolute;
+  top: 360px;
 }
 .row4 {
-  position: relative;
-  right: 42px;
+  position: absolute;
+  top: 440px;
+  left: 139px;
 }
 .row5 {
+  position: absolute;
+  top: 520px;
 }
 #zeroBtn {
   width: 144px;
@@ -77,7 +94,7 @@ button {
   top: -40px;
 }
 .decimalBtn {
-position: relative;
+  position: relative;
   top: -40px;
 }
 .equalBtn {

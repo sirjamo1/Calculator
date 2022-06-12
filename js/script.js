@@ -46,6 +46,7 @@ function maths(operator, tempValue) {
   }
 }
 
+const keySound = new Audio("sounds/ueffects__a-key.wav");
 let displayValue = [];
 let operator = [];
 let tempValue = [];
@@ -53,6 +54,7 @@ let answer = [];
 document.getElementById("screenInput").innerHTML = "0";
 
 function storeInput(e) {
+  keySound.play();
   let buttonInput = e.getAttribute("value");
   //IF BUTTON IS NUMBER ADD / IF BUTTON IS "." ONLY 0NE "." CAN BE ADDED
   if (
@@ -67,6 +69,7 @@ function storeInput(e) {
     } else {
       document.getElementById("screenInput").innerHTML = `${(displayValue +=
         buttonInput)}`;
+      answer = [];
     }
   } else if (
     //OPERATOR INPUT
@@ -113,9 +116,10 @@ function storeInput(e) {
       }
     }
   }
-  console.log({ buttonInput });
-  console.log({ operator });
-  console.log({ displayValue });
-  console.log({ tempValue });
-  console.log({ answer });
+  // console.log("-------------------------------");
+  // console.log({ buttonInput });
+  // console.log({ operator });
+  // console.log({ displayValue });
+  // console.log({ tempValue });
+  // console.log({ answer });
 }
