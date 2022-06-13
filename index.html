@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/calculator-solid.svg" />
     <script src="js/script.js" defer></script>
     <title>Calculator</title>
   </head>
@@ -16,7 +17,7 @@
           <button
             type="button"
             value="clear"
-            class="clearBtn"
+            id="clear"
             onclick="storeInput(this)"
           >
             Clear
@@ -24,7 +25,7 @@
           <button
             type="button"
             value="/"
-            class="divideBtn"
+            id="divide"
             onclick="storeInput(this)"
           >
             /
@@ -32,54 +33,67 @@
           <button
             type="button"
             value="*"
-            class="multiplyBtn"
+            id="multiply"
             onclick="storeInput(this)"
           >
             *
           </button>
         </div>
         <div class="row2">
-          <button type="button" value="7" onclick="storeInput(this)">7</button>
-          <button type="button" value="8" onclick="storeInput(this)">8</button>
-          <button type="button" value="9" onclick="storeInput(this)">9</button>
-          <button type="button" value="-" onclick="storeInput(this)">-</button>
+          <button type="button" value="7" id="seven" onclick="storeInput(this)">
+            7
+          </button>
+          <button type="button" value="8" id="eight" onclick="storeInput(this)">
+            8
+          </button>
+          <button type="button" value="9" id="nine" onclick="storeInput(this)">
+            9
+          </button>
+          <button type="button" value="-" id="minus" onclick="storeInput(this)">
+            -
+          </button>
         </div>
         <div class="row3">
-          <button type="button" value="4" onclick="storeInput(this)">4</button>
-          <button type="button" value="5" onclick="storeInput(this)">5</button>
-          <button type="button" value="6" onclick="storeInput(this)">6</button>
-          <button type="button" value="+" onclick="storeInput(this)">+</button>
+          <button type="button" value="4" id="four" onclick="storeInput(this)">
+            4
+          </button>
+          <button type="button" value="5" id="five" onclick="storeInput(this)">
+            5
+          </button>
+          <button type="button" value="6" id="six" onclick="storeInput(this)">
+            6
+          </button>
+          <button type="button" value="+" id="plus" onclick="storeInput(this)">
+            +
+          </button>
         </div>
         <div class="row4">
-          <button type="button" value="1" onclick="storeInput(this)">1</button>
-          <button type="button" value="2" onclick="storeInput(this)">2</button>
-          <button type="button" value="3" onclick="storeInput(this)">3</button>
+          <button type="button" value="1" id="one" onclick="storeInput(this)">
+            1
+          </button>
+          <button type="button" value="2" id="two" onclick="storeInput(this)">
+            2
+          </button>
+          <button type="button" value="3" id="three" onclick="storeInput(this)">
+            3
+          </button>
         </div>
         <div class="row5">
-          <button
-            type="button"
-            value="0"
-            id="zeroBtn"
-            onclick="storeInput(this)"
-          >
+          <button type="button" value="0" id="zero" onclick="storeInput(this)">
             0
           </button>
           <button
             type="button"
             value="."
-            class="decimalBtn"
+            id="decimal"
             onclick="storeInput(this)"
           >
             .
           </button>
-          <button
-            type="button"
-            value="="
-            class="equalBtn"
-            onclick="storeInput(this)"
-          >
+          <button type="button" value="=" id="equal" onclick="storeInput(this)">
             =
           </button>
+          <footer>By James Howells</footer>
         </div>
       </div>
     </div>

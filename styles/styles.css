@@ -36,8 +36,8 @@ body {
 }
 
 #numberContainer {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 button {
@@ -59,47 +59,62 @@ button:active {
   margin-top: 0px;
   margin-bottom: -5px;
   position: absolute;
-  top: 230px;
+  top: 0px;
 }
-.clearBtn {
+#clear {
   width: 144px;
   height: 40px;
 }
-.divideBtn {
+#divide {
   height: 40px;
 }
-.multiplyBtn {
+#multiply {
   height: 40px;
 }
 .row2 {
   position: absolute;
-  top: 280px;
+  top: 50px;
 }
 .row3 {
   position: absolute;
-  top: 360px;
+  top: 130px;
 }
 .row4 {
   position: absolute;
-  top: 440px;
-  left: 139px;
+  width: 332px;
+  left: 023px;
+  top: 210px;
 }
 .row5 {
   position: absolute;
-  top: 520px;
+  top: 290px;
 }
-#zeroBtn {
+#zero {
   width: 144px;
   position: relative;
   top: -40px;
 }
-.decimalBtn {
+#decimal {
   position: relative;
   top: -40px;
 }
-.equalBtn {
+#equal {
   background-color: orange;
   height: 140px;
   position: relative;
   top: -80px;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: lightgray;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  color: red;
+  width: 100vw;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
 }
