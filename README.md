@@ -2,6 +2,12 @@
 
 <h3>update : 13/06/2022</h3>
 <br><br>
+
+<br />
+
+![Alt Text](images/calculatorScreenshot.png?raw=true "React Counter screenshot")
+<br />
+
 <h4>Features</h4>
 <ul>
 <li>Keyboard support</li>
