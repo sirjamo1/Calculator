@@ -5,7 +5,7 @@
 
 <br />
 
-![Alt Text](images/calculatorScreenshot.png?raw=true "React Counter screenshot")
+![Alt Text](images/calculatorScreenshot.png?raw=true "Calculator screenshot")
 <br />
 
 <h4>Features</h4>
